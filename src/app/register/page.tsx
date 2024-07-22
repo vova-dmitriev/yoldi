@@ -8,9 +8,11 @@ import AuthService from "@/api/AuthService";
 import { RegisterForm } from "@/components/Forms/RegisterForm/RegisterForm";
 import { Meta } from "@/components/Meta/Meta";
 import { X_API_KEY } from "@/constants/localStorage";
+import { PRIVATE_ROUTES } from "@/constants/routes";
 import { useAppDispatch } from "@/hooks/redux";
 import { IRegister } from "@/interfaces/auth.interface";
 import { setError } from "@/store/slices/authSlice";
+import { setPassword } from "@/store/slices/userSlice";
 
 import styles from "./register.module.scss";
 
@@ -21,7 +23,7 @@ const Register = () => {
   useEffect(() => {
     const apiKey = localStorage.getItem(X_API_KEY);
     if (apiKey) {
-      router.push("/profile");
+      router.push(PRIVATE_ROUTES.profile);
     }
   }, [router]);
 
@@ -30,7 +32,9 @@ const Register = () => {
       const response = await AuthService.signUp(data);
       const apiKey = response.data.value;
       localStorage.setItem(X_API_KEY, apiKey);
-      router.push("/profile");
+
+      dispatch(setPassword(data.password));
+      router.push(PRIVATE_ROUTES.profile);
     } catch (error) {
       console.error(error);
       dispatch(setError((error as any).response?.data?.message));

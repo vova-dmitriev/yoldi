@@ -13,3 +13,12 @@ export interface IImage {
   width: string;
   height: string;
 }
+
+export interface IUserNewData {
+  name: string;
+  imageId: string | null;
+  password: string;
+  slug: string;
+  coverId: string | null;
+  description: string;
+}
