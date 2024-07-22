@@ -1,0 +1,41 @@
+@import "@/styles/colors";
+
+.footer {
+  width: 100vw;
+  height: 72px;
+
+  background-color: $background-primary;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  border-top: 1px solid rgb(230, 230, 230);
+
+  padding: 20px 40px;
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .text {
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25.6px;
+      text-align: left;
+      color: $gray;
+    }
+
+    .btn {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 25.6px;
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "@/styles/colors";
+
+.button {
+  background-color: $background-primary;
+  color: $txt-color;
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  height: 40px;
+  width: 100%;
+
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inactive {
+  background-color: $strokes-primary;
+  color: $white;
+}
+
+.dark {
+  background-color: $black;
+  color: $white;
+}

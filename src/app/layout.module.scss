@@ -1,0 +1,36 @@
+@import "@/styles/colors";
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 80px 1fr auto;
+
+  min-height: 100vh;
+
+  background-color: $background-secondary;
+
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+}
+
+.header {
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.body {
+  grid-area: body;
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+.footer {
+  grid-area: footer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
