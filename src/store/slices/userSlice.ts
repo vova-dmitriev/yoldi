@@ -4,10 +4,12 @@ import { IUser } from "@/interfaces/user.interface";
 
 export interface UserState {
   user: IUser | null;
+  error: string | null;
 }
 
 const initialState: UserState = {
   user: null,
+  error: null,
 };
 
 export const userSlice = createSlice({
@@ -20,9 +22,16 @@ export const userSlice = createSlice({
     resetUser: (state) => {
       state.user = null;
     },
+
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
+    resetError: (state) => {
+      state.error = null;
+    },
   },
 });
 
-export const { setUser, resetUser } = userSlice.actions;
+export const { setUser, resetUser, setError, resetError } = userSlice.actions;
 
 export default userSlice.reducer;

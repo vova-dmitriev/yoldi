@@ -1,7 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import useSWR from "swr";
 
-import api from "@/lib/api";
+import api from "@/api/api";
+import UsersService from "@/api/UsersService";
 
 import styles from "./editProfile.module.scss";
 
@@ -28,8 +29,9 @@ const EditProfile = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await api.patch("/profile", formData);
-      console.log(response.data);
+      // TODO
+      // const response = await UsersService.updateUser(formData);
+      // console.log(response.data);
     } catch (error) {
       console.error(error);
     }

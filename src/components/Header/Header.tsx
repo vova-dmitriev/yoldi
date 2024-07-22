@@ -5,8 +5,9 @@ import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
 
 import Logo from "@/assets/icons/logo.svg";
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/constants/routes";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector, useUserSelector } from "@/hooks/redux";
 
+import { Avatar } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
 import styles from "./Header.module.scss";
 
@@ -18,7 +19,7 @@ type HeaderProps = DetailedHTMLProps<
 export const Header: FC<HeaderProps> = ({ className, ...props }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.user);
+  const { user } = useUserSelector();
 
   const handleClick = () => {
     if (user) {
@@ -43,6 +44,12 @@ export const Header: FC<HeaderProps> = ({ className, ...props }) => {
       </div>
       <div className={styles.right}>
         {!user && <Button onClick={handleClick}>Войти</Button>}
+        {user && (
+          <div className={styles.user}>
+            <div className={styles.name}>{user.name}</div>
+            <Avatar size="normal" user={user} />
+          </div>
+        )}
       </div>
     </div>
   );

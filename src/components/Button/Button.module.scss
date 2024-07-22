@@ -15,6 +15,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d6dbde;
+  }
 }
 
 .inactive {
@@ -25,4 +31,21 @@
 .dark {
   background-color: $black;
   color: $white;
+
+  &:hover {
+    background-color: #889198;
+  }
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+
+  &Left {
+    margin-right: 10px;
+  }
+
+  &Right {
+    margin-left: 10px;
+  }
 }

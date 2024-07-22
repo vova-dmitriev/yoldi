@@ -1,18 +1,21 @@
 "use client";
 
-import Head from "next/head";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { AuthForm } from "@/components/AuthForm/AuthForm";
+import AuthService from "@/api/AuthService";
+import { LoginForm } from "@/components/Forms/LoginForm/LoginForm";
 import { Meta } from "@/components/Meta/Meta";
 import { X_API_KEY } from "@/constants/localStorage";
+import { PRIVATE_ROUTES } from "@/constants/routes";
+import { useAppDispatch } from "@/hooks/redux";
 import { ILogin } from "@/interfaces/auth.interface";
-import api from "@/lib/api";
+import { setError } from "@/store/slices/authSlice";
 
 import styles from "./login.module.scss";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   useEffect(() => {
@@ -24,19 +27,20 @@ const Login = () => {
 
   const handleSubmit = async (data: ILogin) => {
     try {
-      const response = await api.post("/auth/login", data);
+      const response = await AuthService.login(data);
       const apiKey = response.data.value;
       localStorage.setItem(X_API_KEY, apiKey);
-      router.push("/profile");
+      router.push(PRIVATE_ROUTES.profile);
     } catch (error) {
       console.error(error);
+      dispatch(setError((error as any).response?.data?.message));
     }
   };
 
   return (
     <Meta title="Вход">
       <div className={styles.container}>
-        <AuthForm type="login" onSubmit={handleSubmit} />
+        <LoginForm onSubmit={handleSubmit} />
       </div>
     </Meta>
   );
