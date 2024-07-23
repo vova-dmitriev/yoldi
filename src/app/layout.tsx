@@ -2,7 +2,6 @@
 
 import "@/styles/global.scss";
 
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { Provider } from "react-redux";
