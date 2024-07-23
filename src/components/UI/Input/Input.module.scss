@@ -1,0 +1,80 @@
+@import "@/styles/colors";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    border: 1px solid rgb(131, 131, 131);
+    border-radius: 5px;
+
+    background-color: $background-primary;
+
+    height: 50px;
+
+    .icon {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+
+      position: absolute;
+      top: 12.5px;
+      left: 20px;
+    }
+
+    .input {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      outline: none;
+
+      padding: 12px 20px;
+
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 160%;
+
+      &::placeholder {
+        color: $gray;
+      }
+
+      &WithIcon {
+        padding: 12px 20px 12px 55px;
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eye {
+      z-index: 2;
+      cursor: pointer;
+
+      width: 25px;
+      height: 25px;
+
+      position: absolute;
+      right: 20px;
+      top: 12.5px;
+    }
+  }
+
+  .error {
+    color: $error;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}

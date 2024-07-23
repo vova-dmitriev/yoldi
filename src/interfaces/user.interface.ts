@@ -20,5 +20,5 @@ export interface IUserNewData {
   password: string;
   slug: string;
   coverId: string | null;
-  description: string;
+  description: string | null;
 }

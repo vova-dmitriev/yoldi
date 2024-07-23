@@ -3,15 +3,18 @@ import { useRef } from "react";
 import { useSWRConfig } from "swr";
 
 import UsersService from "@/api/UsersService";
+import { PRIVATE_ROUTES } from "@/constants/routes";
 import { IUserNewData } from "@/interfaces/user.interface";
+import { setUser } from "@/store/slices/userSlice";
 
-import { useUserSelector } from "./redux";
+import { useAppDispatch, useUserSelector } from "./redux";
 
 export const useUploadImage = (imageType: "avatar" | "cover") => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { mutate } = useSWRConfig();
 
   const { user, password } = useUserSelector();
+  const dispatch = useAppDispatch();
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -37,7 +40,8 @@ export const useUploadImage = (imageType: "avatar" | "cover") => {
       };
       const { data } = await UsersService.updateUser(newUser);
 
-      mutate("/profile", data);
+      mutate(PRIVATE_ROUTES.profile, data);
+      dispatch(setUser(user));
     } catch (error) {
       console.error("Failed to upload image:", error);
     }

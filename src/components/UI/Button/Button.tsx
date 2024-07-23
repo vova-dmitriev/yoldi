@@ -8,6 +8,8 @@ interface ExtraButtonProps {
   dark?: boolean;
   leftIcon?: string;
   rightIcon?: string;
+
+  isLoading?: boolean;
 }
 
 type ButtonProps = DetailedHTMLProps<
@@ -16,6 +18,7 @@ type ButtonProps = DetailedHTMLProps<
 > &
   ExtraButtonProps;
 
+import { Loader } from "../Loader/Loader";
 import styles from "./Button.module.scss";
 
 export const Button: FC<ButtonProps> = ({
@@ -24,6 +27,7 @@ export const Button: FC<ButtonProps> = ({
   dark,
   leftIcon,
   rightIcon,
+  isLoading,
   ...props
 }) => {
   return (
@@ -44,8 +48,7 @@ export const Button: FC<ButtonProps> = ({
           className={cn(styles.icon, styles.iconLeft)}
         />
       )}
-
-      {props.children}
+      {isLoading ? <Loader dark={dark} /> : props.children}
 
       {rightIcon && (
         <Image

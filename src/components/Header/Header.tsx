@@ -8,7 +8,7 @@ import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/constants/routes";
 import { useAppDispatch, useAppSelector, useUserSelector } from "@/hooks/redux";
 
 import { Avatar } from "../Avatar/Avatar";
-import { Button } from "../Button/Button";
+import { Button } from "../UI/Button/Button";
 import styles from "./Header.module.scss";
 
 type HeaderProps = DetailedHTMLProps<

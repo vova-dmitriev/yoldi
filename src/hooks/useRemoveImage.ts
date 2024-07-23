@@ -1,13 +1,15 @@
 import { useSWRConfig } from "swr";
 
 import UsersService from "@/api/UsersService";
+import { PRIVATE_ROUTES } from "@/constants/routes";
 import { IUserNewData } from "@/interfaces/user.interface";
+import { setUser } from "@/store/slices/userSlice";
 
-import { useUserSelector } from "./redux";
+import { useAppDispatch, useUserSelector } from "./redux";
 
 export const useRemoveImage = (imageType: "avatar" | "cover") => {
   const { mutate } = useSWRConfig();
-
+  const dispatch = useAppDispatch();
   const { user, password } = useUserSelector();
 
   const handleRemoveFile = async () => {
@@ -22,7 +24,8 @@ export const useRemoveImage = (imageType: "avatar" | "cover") => {
       };
       const { data } = await UsersService.updateUser(newUser);
 
-      mutate("/profile", data);
+      mutate(PRIVATE_ROUTES.profile, data);
+      dispatch(setUser(data));
     } catch (error) {
       console.error("Failed to remove image:", error);
     }

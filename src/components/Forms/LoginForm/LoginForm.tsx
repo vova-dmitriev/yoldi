@@ -3,8 +3,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import EmailIcon from "@/assets/icons/email.svg";
 import LockIcon from "@/assets/icons/lock.svg";
-import { Button } from "@/components/Button/Button";
-import { Input } from "@/components/Input/Input";
+import { Button } from "@/components/UI/Button/Button";
+import { Input } from "@/components/UI/Input/Input";
 import { EMAIL_REGEX } from "@/constants/regex";
 import { useAppDispatch, useAuthSelector } from "@/hooks/redux";
 import { ILogin } from "@/interfaces/auth.interface";

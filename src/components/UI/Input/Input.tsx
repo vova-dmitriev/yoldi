@@ -2,7 +2,6 @@ import cn from "classnames";
 import Image from "next/image";
 import {
   DetailedHTMLProps,
-  FC,
   forwardRef,
   InputHTMLAttributes,
   useState,
@@ -39,7 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <div className={styles.inputWrapper}>
           {icon && <Image src={icon} className={styles.icon} alt="icon" />}
           <input
-            className={styles.input}
+            className={cn(styles.input, icon && styles.inputWithIcon)}
             {...props}
             onChange={(e) => {
               props.onChange && props.onChange(e);

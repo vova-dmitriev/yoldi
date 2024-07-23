@@ -8,10 +8,11 @@ import UsersService from "@/api/UsersService";
 import EditIcon from "@/assets/icons/pen.svg";
 import LogoutIcon from "@/assets/icons/sign-out.svg";
 import { Avatar } from "@/components/Avatar/Avatar";
-import { Button } from "@/components/Button/Button";
 import { Cover } from "@/components/Cover/Cover";
-import { Spinner } from "@/components/Spinner/Spinner";
-import { PUBLIC_ROUTES } from "@/constants/routes";
+import { EditProfileModal } from "@/components/Modals/EditProfile/EditProfileModal";
+import { Button } from "@/components/UI/Button/Button";
+import { Spinner } from "@/components/UI/Spinner/Spinner";
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/constants/routes";
 import { useAppDispatch, useUserSelector } from "@/hooks/redux";
 import { logout } from "@/store/slices/authSlice";
 import { resetUser, setUser } from "@/store/slices/userSlice";
@@ -21,10 +22,12 @@ import styles from "./profile.module.scss";
 const fetcher = (url: string) => UsersService.getUser().then((res) => res.data);
 
 const Profile = () => {
-  const { data, error, isLoading } = useSWR("/profile", fetcher);
+  const { data, error, isLoading } = useSWR(PRIVATE_ROUTES.profile, fetcher);
   const dispatch = useAppDispatch();
   const { user } = useUserSelector();
   const router = useRouter();
+
+  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -32,7 +35,15 @@ const Profile = () => {
     }
   }, [dispatch, data]);
 
-  const handleEditClick = () => {};
+  useEffect(() => {
+    if (error) {
+      router.push(PUBLIC_ROUTES.login);
+    }
+  }, [error, router]);
+
+  const handleEditClick = () => {
+    setModalVisible(true);
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -88,6 +99,8 @@ const Profile = () => {
           </Button>
         </div>
       </div>
+
+      <EditProfileModal isOpen={isModalVisible} setIsOpen={setModalVisible} />
     </div>
   );
 };
