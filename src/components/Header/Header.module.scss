@@ -1,5 +1,6 @@
 @import "@/styles/colors";
 @import "@/styles/variables";
+@import "@/styles/mixins";
 
 .header {
   background-color: $background-primary;
@@ -46,6 +47,12 @@
       display: flex;
       align-items: center;
       gap: 20px;
+
+      .name {
+        max-width: 150px;
+
+        @include ellipsis;
+      }
     }
   }
 }

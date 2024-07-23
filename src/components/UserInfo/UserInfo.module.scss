@@ -1,5 +1,6 @@
 @import "@/styles/colors";
 @import "@/styles/variables";
+@import "@/styles/mixins";
 
 .content {
   padding: 30px;
@@ -32,11 +33,16 @@
       .title {
         display: flex;
         flex-direction: column;
+
+        max-width: 400px;
+
         .name {
           font-size: 30px;
           font-weight: 500;
           line-height: 140%;
           color: $txt-color;
+
+          @include ellipsis;
         }
 
         .email {
@@ -44,6 +50,8 @@
           font-weight: 400;
           line-height: 140%;
           color: $gray;
+
+          @include ellipsis;
         }
       }
 
@@ -80,11 +88,19 @@
       .info {
         flex-direction: column;
         gap: 10px;
+
+        .title {
+          max-width: 300px;
+
+          .name,
+          .email {
+            @include ellipsis;
+          }
+        }
       }
 
       .description {
-        max-width: none;
-        width: 100%;
+        max-width: 90%;
       }
     }
   }

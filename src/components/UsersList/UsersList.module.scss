@@ -1,5 +1,6 @@
 @import "@/styles/colors";
 @import "@/styles/variables";
+@import "@/styles/mixins";
 
 .list {
   display: flex;
@@ -25,21 +26,88 @@
 
     border-radius: 5px;
 
-    .name {
-      margin-left: 20px;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 160%;
-      color: $txt-color;
-      flex-grow: 1;
+    transition: background-color 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -6px;
+      width: 6px;
+      height: 100%;
+      background-color: $white;
+      border-bottom-left-radius: 8px;
+      border-top-left-radius: 8px;
     }
 
-    .email {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 160%;
-      color: $gray;
-      flex-grow: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -6px;
+      width: 6px;
+      height: 100%;
+      background-color: $white;
+      border-bottom-right-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    &:hover {
+      background-color: $background-secondary;
+      transition: background-color 0.2s ease;
+
+      &::before,
+      &::after {
+        background-color: $background-secondary;
+        transition: background-color 0.2s ease;
+      }
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .name {
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 160%;
+        color: $txt-color;
+        flex-grow: 1;
+
+        max-width: 200px;
+        @include ellipsis;
+      }
+
+      .email {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 160%;
+        color: $gray;
+        flex-grow: 0;
+
+        max-width: 200px;
+        @include ellipsis;
+      }
+    }
+  }
+}
+
+@media ($max-width-small) {
+  .list {
+    .userItem {
+      .info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        margin-left: 20px;
+        .name {
+          margin-left: 0;
+        }
+      }
     }
   }
 }
@@ -47,11 +115,15 @@
 @media ($max-width-extra-small) {
   .list {
     .userItem {
-      .email {
-        max-width: 120px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+      .info {
+        margin-left: 20px;
+        .name {
+          margin-left: 0;
+        }
+        .email {
+          max-width: 200px;
+          @include ellipsis;
+        }
       }
     }
   }

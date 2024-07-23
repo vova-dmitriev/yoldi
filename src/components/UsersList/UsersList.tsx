@@ -75,8 +75,10 @@ export const UsersList: FC<UsersListProps> = ({ users, isLoading }) => {
           ref={index === visibleUsers.length - 1 ? lastUserElementRef : null}
         >
           <Avatar size="normal" user={user} />
-          <div className={styles.name}>{user.name}</div>
-          <div className={styles.email}>{user.email}</div>
+          <div className={styles.info}>
+            <div className={styles.name}>{user.name}</div>
+            <div className={styles.email}>{user.email}</div>
+          </div>
         </div>
       ))}
     </div>
