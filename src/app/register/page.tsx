@@ -1,5 +1,6 @@
 "use client";
 
+import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -35,7 +36,15 @@ const Register = () => {
       router.push(PUBLIC_ROUTES.home);
     } catch (error) {
       console.error(error);
-      dispatch(setError((error as any).response?.data?.message));
+
+      const axiosError = error as AxiosError<{ message: string }>;
+
+      const errText =
+        axiosError?.response?.data?.message! ||
+        axiosError.response?.data?.message ||
+        "Неизвестная ошибка";
+
+      dispatch(setError(errText));
     }
   };
 
