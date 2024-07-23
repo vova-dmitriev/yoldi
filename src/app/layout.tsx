@@ -29,9 +29,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider store={store}>
           <div className={styles.wrapper}>
-            <Header />
-            {children}
-            {needShowFooter && <Footer />}
+            <Header className={styles.header} />
+            <div className={styles.body}>{children}</div>
+            {needShowFooter && <Footer className={styles.footer} />}
           </div>
         </Provider>
       </body>
