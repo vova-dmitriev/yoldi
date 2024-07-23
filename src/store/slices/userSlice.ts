@@ -12,7 +12,7 @@ export interface UserState {
 const initialState: UserState = {
   user: null,
   error: null,
-  password: localStorage?.getItem("password") || "",
+  password: "",
 };
 
 export const userSlice = createSlice({

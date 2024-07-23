@@ -12,10 +12,11 @@ import { Cover } from "@/components/Cover/Cover";
 import { EditProfileModal } from "@/components/Modals/EditProfile/EditProfileModal";
 import { Button } from "@/components/UI/Button/Button";
 import { Spinner } from "@/components/UI/Spinner/Spinner";
+import { PASSWORD } from "@/constants/localStorage";
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/constants/routes";
 import { useAppDispatch, useUserSelector } from "@/hooks/redux";
 import { logout } from "@/store/slices/authSlice";
-import { resetUser, setUser } from "@/store/slices/userSlice";
+import { resetUser, setPassword, setUser } from "@/store/slices/userSlice";
 
 import styles from "./profile.module.scss";
 
@@ -28,6 +29,10 @@ const Profile = () => {
   const router = useRouter();
 
   const [isModalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    dispatch(setPassword(localStorage.getItem(PASSWORD) || ""));
+  }, [dispatch]);
 
   useEffect(() => {
     if (data) {
