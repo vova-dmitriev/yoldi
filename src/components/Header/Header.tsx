@@ -24,6 +24,10 @@ export const Header: FC<HeaderProps> = ({ className, ...props }) => {
     router.push(PUBLIC_ROUTES.home);
   };
 
+  const handleLoginClick = () => {
+    router.push(PUBLIC_ROUTES.login);
+  };
+
   const handleUserClick = () => {
     router.push(PRIVATE_ROUTES.profile);
   };
@@ -37,7 +41,7 @@ export const Header: FC<HeaderProps> = ({ className, ...props }) => {
         </div>
       </div>
       <div className={styles.right}>
-        {!user && <Button onClick={handleClick}>Войти</Button>}
+        {!user && <Button onClick={handleLoginClick}>Войти</Button>}
         {user && (
           <div className={styles.user} onClick={handleUserClick}>
             <div className={styles.name}>{user.name}</div>
