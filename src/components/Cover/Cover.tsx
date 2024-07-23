@@ -1,5 +1,4 @@
 import cn from "classnames";
-import Image from "next/image";
 import { FC } from "react";
 
 import ImageIcon from "@/assets/icons/image.svg";
@@ -14,9 +13,10 @@ import styles from "./Cover.module.scss";
 
 interface CoverProps {
   user: IUser;
+  isProfile?: boolean;
 }
 
-export const Cover: FC<CoverProps> = ({ user }) => {
+export const Cover: FC<CoverProps> = ({ user, isProfile }) => {
   const { fileInputRef, handleFileChange, handleClick } =
     useUploadImage("cover");
 
@@ -30,7 +30,7 @@ export const Cover: FC<CoverProps> = ({ user }) => {
       ) : (
         <div className={cn(styles.cover, styles.coverEmpty)} />
       )}
-      {user?.cover && (
+      {user?.cover && isProfile && (
         <Button
           className={styles.coverBtn}
           leftIcon={TrashIcon}
@@ -40,7 +40,7 @@ export const Cover: FC<CoverProps> = ({ user }) => {
           Удалить
         </Button>
       )}
-      {!user?.cover && (
+      {!user?.cover && isProfile && (
         <>
           <Button
             className={styles.coverBtn}

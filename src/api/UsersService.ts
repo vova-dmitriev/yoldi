@@ -4,8 +4,16 @@ import { IUser, IUserNewData } from "@/interfaces/user.interface";
 import api from "./api";
 
 class Users {
-  async getUser() {
+  async getProfile() {
     return await api.get("/profile");
+  }
+
+  async getUsers() {
+    return await api.get("/user");
+  }
+
+  async getUserBySlug(slug: string) {
+    return await api.get(`/user/${slug}`);
   }
 
   async updateUser(data: IUserNewData) {

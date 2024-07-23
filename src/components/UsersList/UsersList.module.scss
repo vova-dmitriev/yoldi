@@ -1,0 +1,62 @@
+@import "@/styles/colors";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .divider {
+    height: 1px;
+    width: 100%;
+    border-bottom: 1px solid $strokes-secondary;
+  }
+
+  .userItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    position: relative;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid $strokes-secondary;
+
+    border-radius: 5px;
+
+    .name {
+      margin-left: 20px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 160%;
+      color: $txt-color;
+      flex-grow: 1;
+    }
+
+    .email {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 160%;
+      color: $gray;
+      flex-grow: 0;
+    }
+
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $hover-background;
+    }
+
+    &:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -10px; // Adjust as needed to control the overflow
+      right: -10px; // Adjust as needed to control the overflow
+      bottom: 0;
+      background-color: $hover-background; // Use your existing variable
+      z-index: -1; // Ensure the background is behind the content
+      border-radius: 5px; // Maintain border-radius consistency
+    }
+  }
+}

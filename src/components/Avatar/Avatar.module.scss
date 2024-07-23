@@ -15,8 +15,6 @@
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
-
   overflow: hidden;
 
   .camera {
@@ -42,6 +40,7 @@
   }
 
   &Profile {
+    cursor: pointer;
     &:hover {
       background-color: $black;
       transition: background-color 0.3s ease;

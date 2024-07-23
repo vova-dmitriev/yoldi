@@ -8,9 +8,8 @@ import Favicon from "../../public/favicon.ico";
 export const metadata: Metadata = {
   title: "Yoldi",
   description: "Yoldi Agency",
-  icons: [{ rel: "icon", url: Favicon.src }],
 };
 
 export default function HomePage() {
-  redirect(PUBLIC_ROUTES.login);
+  redirect(PUBLIC_ROUTES.users);
 }

@@ -8,6 +8,8 @@
   align-items: center;
   justify-content: center;
 
+  object-fit: cover;
+
   &Empty {
     background-color: $background-secondary;
   }

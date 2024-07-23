@@ -1,0 +1,29 @@
+@import "@/styles/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: $background-primary;
+  align-items: center;
+  width: 100%;
+
+  .content {
+    padding: 30px;
+    width: 800px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      width: 100%;
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 140%;
+      color: $txt-color;
+      margin-bottom: 30px;
+    }
+  }
+}

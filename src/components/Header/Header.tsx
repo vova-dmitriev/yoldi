@@ -5,7 +5,7 @@ import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
 
 import Logo from "@/assets/icons/logo.svg";
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/constants/routes";
-import { useAppDispatch, useAppSelector, useUserSelector } from "@/hooks/redux";
+import { useUserSelector } from "@/hooks/redux";
 
 import { Avatar } from "../Avatar/Avatar";
 import { Button } from "../UI/Button/Button";
@@ -18,26 +18,24 @@ type HeaderProps = DetailedHTMLProps<
 
 export const Header: FC<HeaderProps> = ({ className, ...props }) => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
   const { user } = useUserSelector();
 
   const handleClick = () => {
     if (user) {
-      router.push(PRIVATE_ROUTES.profile);
+      router.push(PUBLIC_ROUTES.home);
     } else {
       router.push(PUBLIC_ROUTES.login);
     }
   };
 
+  const handleUserClick = () => {
+    router.push(PRIVATE_ROUTES.profile);
+  };
+
   return (
     <div className={cn(styles.header, className)} {...props}>
-      <div className={styles.left}>
-        <Image
-          src={Logo}
-          alt="logo"
-          className={styles.logo}
-          onClick={handleClick}
-        />
+      <div className={styles.left} onClick={handleClick}>
+        <Image src={Logo} alt="logo" className={styles.logo} />
         <div className={styles.text}>
           Разрабатываем и запускаем сложные веб проекты
         </div>
@@ -45,7 +43,7 @@ export const Header: FC<HeaderProps> = ({ className, ...props }) => {
       <div className={styles.right}>
         {!user && <Button onClick={handleClick}>Войти</Button>}
         {user && (
-          <div className={styles.user}>
+          <div className={styles.user} onClick={handleUserClick}>
             <div className={styles.name}>{user.name}</div>
             <Avatar size="normal" user={user} />
           </div>
