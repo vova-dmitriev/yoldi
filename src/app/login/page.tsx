@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 import AuthService from "@/api/AuthService";
 import { LoginForm } from "@/components/Forms/LoginForm/LoginForm";
-import { Meta } from "@/components/Meta/Meta";
 import { X_API_KEY } from "@/constants/localStorage";
 import { PUBLIC_ROUTES } from "@/constants/routes";
 import { useAppDispatch } from "@/hooks/redux";
@@ -33,11 +32,9 @@ const Login = () => {
   };
 
   return (
-    <Meta title="Вход">
-      <div className={styles.container}>
-        <LoginForm onSubmit={handleSubmit} />
-      </div>
-    </Meta>
+    <div className={styles.container}>
+      <LoginForm onSubmit={handleSubmit} />
+    </div>
   );
 };
 

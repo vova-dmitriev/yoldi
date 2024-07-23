@@ -21,11 +21,7 @@ export const Header: FC<HeaderProps> = ({ className, ...props }) => {
   const { user } = useUserSelector();
 
   const handleClick = () => {
-    if (user) {
-      router.push(PUBLIC_ROUTES.home);
-    } else {
-      router.push(PUBLIC_ROUTES.login);
-    }
+    router.push(PUBLIC_ROUTES.home);
   };
 
   const handleUserClick = () => {

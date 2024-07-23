@@ -3,10 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import api from "@/api/api";
 import AuthService from "@/api/AuthService";
 import { RegisterForm } from "@/components/Forms/RegisterForm/RegisterForm";
-import { Meta } from "@/components/Meta/Meta";
 import { X_API_KEY } from "@/constants/localStorage";
 import { PUBLIC_ROUTES } from "@/constants/routes";
 import { useAppDispatch } from "@/hooks/redux";
@@ -42,11 +40,9 @@ const Register = () => {
   };
 
   return (
-    <Meta title="Регистрация">
-      <div className={styles.container}>
-        <RegisterForm onSubmit={handleSubmit} />
-      </div>
-    </Meta>
+    <div className={styles.container}>
+      <RegisterForm onSubmit={handleSubmit} />
+    </div>
   );
 };
 

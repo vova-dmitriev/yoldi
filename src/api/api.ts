@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { X_API_KEY } from "@/constants/localStorage";
-import { PUBLIC_ROUTES } from "@/constants/routes";
 
 const api = axios.create({
   baseURL: "https://frontend-test-api.yoldi.agency/api/",

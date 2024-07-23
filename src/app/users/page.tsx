@@ -1,5 +1,5 @@
 "use client";
-import cn from "classnames";
+
 import { FC } from "react";
 import useSWR from "swr";
 
@@ -15,7 +15,7 @@ const fetcher = () => UsersService.getUsers().then((res) => res.data);
 
 const Users: FC = () => {
   useLoadProfile();
-  const { data, error, isLoading } = useSWR(PUBLIC_ROUTES.users, fetcher);
+  const { data, isLoading } = useSWR(PUBLIC_ROUTES.users, fetcher);
 
   if (!data || isLoading) {
     return <Spinner />;

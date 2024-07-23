@@ -2,23 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
-import useSWR from "swr";
 
 import UsersService from "@/api/UsersService";
-import EditIcon from "@/assets/icons/pen.svg";
-import LogoutIcon from "@/assets/icons/sign-out.svg";
-import { Avatar } from "@/components/Avatar/Avatar";
-import { Cover } from "@/components/Cover/Cover";
 import { EditProfileModal } from "@/components/Modals/EditProfile/EditProfileModal";
-import { Button } from "@/components/UI/Button/Button";
 import { Spinner } from "@/components/UI/Spinner/Spinner";
 import { UserInfo } from "@/components/UserInfo/UserInfo";
 import { PASSWORD } from "@/constants/localStorage";
-import { PRIVATE_ROUTES, PUBLIC_ROUTES } from "@/constants/routes";
+import { PUBLIC_ROUTES } from "@/constants/routes";
 import { useAppDispatch, useUserSelector } from "@/hooks/redux";
 import { useLoadProfile } from "@/hooks/useLoadProfile";
 import { logout } from "@/store/slices/authSlice";
-import { resetUser, setPassword, setUser } from "@/store/slices/userSlice";
+import { resetUser, setPassword } from "@/store/slices/userSlice";
 
 import styles from "./profile.module.scss";
 
