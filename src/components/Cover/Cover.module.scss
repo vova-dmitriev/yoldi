@@ -23,6 +23,8 @@
     opacity: 0;
 
     &:hover {
+      width: 180px;
+      position: absolute;
       opacity: 1;
     }
   }

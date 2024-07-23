@@ -32,13 +32,13 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      {...props}
       className={cn(
         styles.button,
         dark && !inactive && styles.dark,
         inactive && styles.inactive,
         className
       )}
-      {...props}
       disabled={inactive}
     >
       {leftIcon && (
