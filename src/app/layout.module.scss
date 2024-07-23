@@ -1,8 +1,9 @@
 @import "@/styles/colors";
+@import "@/styles/variables";
 
 .wrapper {
   display: grid;
-  grid-template-rows: 80px 1fr auto;
+  grid-template-rows: $header-height 1fr auto;
 
   min-height: 100vh;
 
@@ -33,4 +34,10 @@
   grid-area: footer;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+@media ($max-width-small) {
+  .wrapper {
+    background-color: $background-primary;
+  }
 }

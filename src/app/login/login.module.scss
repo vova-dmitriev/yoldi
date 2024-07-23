@@ -1,7 +1,14 @@
 @import "@/styles/colors";
+@import "@/styles/variables";
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media ($max-width-small) {
+  .container {
+    align-items: flex-start;
+  }
 }

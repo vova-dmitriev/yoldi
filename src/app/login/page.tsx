@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 import AuthService from "@/api/AuthService";
 import { LoginForm } from "@/components/Forms/LoginForm/LoginForm";
@@ -18,13 +17,6 @@ import styles from "./login.module.scss";
 const Login = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-
-  useEffect(() => {
-    const apiKey = localStorage.getItem(X_API_KEY);
-    if (apiKey) {
-      // router.push(PUBLIC_ROUTES.home);
-    }
-  }, [router]);
 
   const handleSubmit = async (data: ILogin) => {
     try {

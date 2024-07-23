@@ -1,4 +1,5 @@
 @import "@/styles/colors";
+@import "@/styles/variables";
 
 .wrapper {
   height: 100%;
@@ -33,5 +34,19 @@
     background-color: $white;
     width: 600px;
     padding: 30px;
+  }
+}
+
+@media ($max-width-small) {
+  .wrapper {
+    background-color: transparent;
+    position: absolute;
+    top: $header-height;
+    height: calc(100% - $header-height);
+    .modal {
+      height: 100%;
+      width: 100%;
+      align-items: flex-start;
+    }
   }
 }

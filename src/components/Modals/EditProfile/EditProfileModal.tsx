@@ -98,8 +98,8 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <form onSubmit={handleSubmit(onSubmitHandler)} className={styles.form}>
-        <div className={styles.title}>Редактировать профиль</div>
         <div className={styles.content}>
+          <div className={styles.title}>Редактировать профиль</div>
           <div className={styles.name}>
             <div className={styles.inputTitle}>Имя</div>
             <Input
@@ -131,6 +131,7 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
               {...register("description", {
                 required: false,
               })}
+              className={styles.textArea}
               error={errors.description?.message}
             />
           </div>
